@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/logo.png" type="image/png">
+    <title>Upasthitii</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Preloader Section -->
+  <div id="preloader">
+    <img src="/logo.png" alt="Loading...">
+  </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="/">
+            <div class="logo-image" >
+                <img id="logo" src="/logo.png" alt="AI Attendance Logo" >
+                <img src="/bg3.png" alt="Background Image" class="second-logo">
+            </div>
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" data-page="home">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#" class="nav-link" data-page="about">
+                <i class="fas fa-info-circle"></i> About
+            </a>
+            <a href="#" class="nav-link" data-page="team">
+                <i class="fas fa-users"></i> Our Team
+            </a>
+            <a href="#" class="nav-link" data-page="services">
+                <i class="fas fa-cogs"></i> Services
+            </a>
+            <a href="#" class="nav-link" data-page="products">
+                <i class="fas fa-shopping-cart"></i> Products
+            </a>
+            <a href="#" class="nav-link" data-page="contact">
+                <i class="fas fa-envelope"></i> Contact
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Responsive Vertical Page Avatars -->
+        <div class="responsive-page-avatars" id="responsivePageAvatars">
+            <div class="page-avatar" data-page="home" title="Home">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="page-avatar" data-page="about" title="About">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="page-avatar" data-page="team" title="Our Team">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="page-avatar" data-page="services" title="Services">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <div class="page-avatar" data-page="products" title="Products">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="page-avatar" data-page="contact" title="Contact">
+                <i class="fas fa-envelope"></i>
+            </div>
+        </div>
+
+        <!-- Home Page -->
+        <div class="page-content active" id="home">
+            <div class="container-fluid">
+                <div class="hero-section">
+                    <div class="row align-items-center" style="margin-left: 1rem;">
+                        <div class="col-lg-6">
+                            <img src="/bg.png" alt="image" class="hero-bg-image">
+                            <p class="lead text-muted mb-4">
+                                Revolutionize your workplace attendance management with cutting-edge AI face recognition and GPS tracking technology.
+                            </p>
+                            <button class="btn btn-primary btn-lg me-3">Get Started</button>
+                            <button class="btn btn-outline-primary btn-lg">Learn More</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="hero-image">
+                                <img id="image" src="/logo.png" alt="logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proposed Work Section -->
+                <div class="section-divider"></div>
+                <div class="content-section">
+                    <h2 class="section-title">How It Works</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-face-smile"></i>
+                                </div>
+                                <h5>AI Face Recognition</h5>
+                                <p>Verifies employee identity quickly and accurately, reducing fraud risks.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h5>GPS Location Tracking</h5>
+                                <p>Confirms that employees are physically present at their designated worksite.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h5>Secure Database</h5>
+                                <p>Attendance records are securely stored in the database, ensuring easy access and backup.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h5>Real-time Data</h5>
+                                <p>Real-time attendance data available for Admin and HR, improving transparency and decision-making.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits Section -->
+                <div class="section-divider"></div>
+                <div class="content-section">
+                <h2 class="section-title">Key Benefits</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h6>Reduced Proxy/Fake Attendance</h6>
+                    </div>
+                    </div>
+                    <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h6>Increased Employee Accountability & Productivity</h6>
+                    </div>
+                    </div>
+                    <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fas fa-hands-wash"></i>
+                        <h6>Healthier Work Environment (No Touch Systems)</h6>
+                    </div>
+                    </div>
+                    <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fas fa-calculator"></i>
+                        <h6>Accurate Payroll Processing</h6>
+                    </div>
+                    </div>
+                    <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h6>Better Decision-making with Real-time Reports</h6>
+                    </div>
+                    </div>
+                    <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fas fa-handshake"></i>
+                        <h6>Enhanced Trust & Transparency</h6>
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="benefit-card">
+                        <i class="fas fa-gavel"></i>
+                        <h6>Improved Compliance with Legal Standards (Data/Privacy)</h6>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div class="page-content" id="about">
+            <div class="container-fluid">
+                <h1 class="page-title">About Us</h1>
+                <div class="content-section">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <p class="lead" style="font-weight: 600;">
+                                Traditional attendance systems often struggle to keep up with the demands of modern workplaces. Manual registers, punch cards, and even biometric systems have limitations, such as inefficiency, lack of real-time tracking, and the possibility of manipulation.
+                            </p>
+                            <p class="lead" style="font-weight: 600;">
+                                Basically monitoring attendance is a serious organizational management function, mainly in schools, workplaces, and other formal settings. Conventional techniques for tracking attendance, including manual roll calls or swipe cards, tend to be cumbersome, error prone, and vulnerable to abuse such as proxy attendance.
+                            </p>
+                            <p class="lead" style="font-weight: 600;">
+                                With the growth of technology, Artificial Intelligence (AI) and Global Positioning System (GPS) have become effective tools to automate and increase the accuracy of attendance monitoring systems.
+                            </p>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="about-stats">
+                                <div class="stat-item">
+                                    <h3 class="text-primary">99.9%</h3>
+                                    <p>Accuracy Rate</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3 class="text-primary">50+</h3>
+                                    <p>Companies Trust Us</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3 class="text-primary">24/7</h3>
+                                    <p>Support Available</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Team Page -->
+        <div class="page-content" id="team">
+            <div class="container-fluid">
+                <h1 class="page-title">Our Team</h1>
+                <div class="content-section">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-avatar">
+                                    <img src="/anil.jpg" alt="Rot Anil" class="img-fluid rounded-circle">
+                                </div>
+                                <h5>Rot Anil</h5>
+                                <p class="text-muted">Founder & Legal Advisor</p>
+                                <div class="team-social">
+                                    <a href="https://www.linkedin.com/in/rot-anil-59135828b/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="mailto:anil@example.com" target="_blank" rel="noopener noreferrer" title="Email">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                                <div class="team-info">
+                                    <p><strong>Email:</strong> anil@example.com</p>
+                                    <p><strong>Phone:</strong> +91-9876543210</p>
+                                    <p><strong>Skills:</strong> Legal Compliance, Policy Making, Negotiation</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-avatar">
+                                    <img src="/karan.jpeg" alt="Karan Kumar Bind" class="img-fluid rounded-circle">
+                                </div>
+                                <h5>Karan Kumar Bind</h5>
+                                <p class="text-muted">CEO (Chief Executive Officer)</p>
+                                <div class="team-social">
+                                    <a href="https://www.linkedin.com/in/karantiger/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="mailto:karan@example.com" target="_blank" rel="noopener noreferrer" title="Email">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                                <div class="team-info">
+                                    <p><strong>Email:</strong> karan@example.com</p>
+                                    <p><strong>Phone:</strong> +91-9876543211</p>
+                                    <p><strong>Skills:</strong> Leadership, Strategy, Business Development</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-avatar">
+                                    <img src="/antrall.jpeg" alt="Pandey Antrall" class="img-fluid rounded-circle">
+                                </div>
+                                <h5>Pandey Antrall</h5>
+                                <p class="text-muted">COO (Chief Operating Officer)</p>
+                                <div class="team-social">
+                                    <a href="https://www.linkedin.com/in/antrral-pandey-1366742b8/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="mailto:antrall@example.com" target="_blank" rel="noopener noreferrer" title="Email">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                                <div class="team-info">
+                                    <p><strong>Email:</strong> antrall@example.com</p>
+                                    <p><strong>Phone:</strong> +91-9876543212</p>
+                                    <p><strong>Skills:</strong> Operations, Management, Process Improvement</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-avatar">
+                                    <img src="/rohit.jpeg" alt="Rohit Thakor" class="img-fluid rounded-circle">
+                                </div>
+                                <h5>Rohit Thakor</h5>
+                                <p class="text-muted">Security Specialist</p>
+                                <div class="team-social">
+                                    <a href="https://www.linkedin.com/in/rohit-thakor-b77942287/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="https://github.com/rohit-thakor" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="mailto:rohit@example.com" target="_blank" rel="noopener noreferrer" title="Email">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                                <div class="team-info">
+                                    <p><strong>Email:</strong> rohit@example.com</p>
+                                    <p><strong>Phone:</strong> +91-9876543213</p>
+                                    <p><strong>Skills:</strong> Cybersecurity, Risk Assessment, Penetration Testing</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-avatar">
+                                    <img src="/prakash.jpeg" alt="Khant Prakash" class="img-fluid rounded-circle">
+                                </div>
+                                <h5>Khant Prakash</h5>
+                                <p class="text-muted">CMO (Chief Marketing Officer)</p>
+                                <div class="team-social">
+                                    <a href="https://www.linkedin.com/in/prakash-khant-325102353/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="mailto:prakash@example.com" target="_blank" rel="noopener noreferrer" title="Email">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                                <div class="team-info">
+                                    <p><strong>Email:</strong> prakash@example.com</p>
+                                    <p><strong>Phone:</strong> +91-9876543214</p>
+                                    <p><strong>Skills:</strong> Digital Marketing, Branding, Market Research</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-avatar">
+                                    <img src="/mayur.jpeg" alt="Mayur Thakor" class="img-fluid rounded-circle">
+                                </div>
+                                <h5>Mayur Thakor</h5>
+                                <p class="text-muted">CTO (Chief Technology Officer)</p>
+                                <div class="team-social">
+                                    <a href="https://www.linkedin.com/in/thakormayur/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="https://github.com/thakormayur" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="mailto:mayur@example.com" target="_blank" rel="noopener noreferrer" title="Email">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                                <div class="team-info">
+                                    <p><strong>Email:</strong> mayur@example.com</p>
+                                    <p><strong>Phone:</strong> +91-9876543215</p>
+                                    <p><strong>Skills:</strong> Software Architecture, Cloud Computing, AI/ML</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Page -->
+        <div class="page-content" id="services">
+            <div class="container-fluid">
+                <h1 class="page-title">Our Solutions</h1>
+                <div class="content-section">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-mobile-alt"></i> Digital Smart Attendance</h5>
+                                <p>Replace manual registers with digital smart attendance systems (e.g., app-based or facial recognition). Automate timestamp logging.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-hand-paper"></i> Contactless Methods</h5>
+                                <p>Shift to contactless methods like facial recognition, RFID, or mobile app check-ins. Sanitize fingerprint pads regularly if still used.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-chart-bar"></i> Productivity Tracking</h5>
+                                <p>Integrate with tools like activity trackers, screen monitoring, or idle detection (e.g., mouse/keyboard inactivity alerts). Log project completion & productivity.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-map-marked-alt"></i> GPS & Geofencing</h5>
+                                <p>Enable GPS-based check-ins with geofencing. Cross-verify with task completion metrics.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-eye"></i> AI Facial Recognition</h5>
+                                <p>Use AI-based facial recognition with liveness detection (blinking, movement). Limit login to one device per user.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-bolt"></i> High-Speed Processing</h5>
+                                <p>Upgrade to faster edge-based facial recognition systems. Use smartphone-based scanning for speed & convenience.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-desktop"></i> Employee Monitoring</h5>
+                                <p>Install website restriction policies during work hours. Use employee monitoring software (e.g., Time Doctor, Hubstaff).</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-wifi"></i> Offline Support</h5>
+                                <p>Allow offline attendance in mobile apps, synced when online. Store data locally with encryption, sync later to the cloud.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-lock"></i> Data Security</h5>
+                                <p>Use end-to-end encryption. Follow GDPR/IT Act 2000 guidelines. Take user consent and publish privacy policies.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-qrcode"></i> Smart QR Solutions</h5>
+                                <p>Make QR codes dynamic (auto-refresh). GPS + QR scan validation. Tie each QR scan to face or photo capture.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="solution-card">
+                                <h5><i class="fas fa-bell"></i> Real-time Alerts & Dashboard</h5>
+                                <p>Add real-time alerts (email/SMS/app) for absences, late entries, and suspicious activity. Dashboard view for HR/admins.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Page -->
+        <div class="page-content" id="products">
+            <div class="container-fluid">
+                <div class="hero-section">
+                    <div class="text-center">
+                        <h1 class="page-title">Choose Your Plan</h1>
+                        <p class="lead mb-5">Select the perfect subscription plan for your business needs</p>
+                    </div>
+                </div>
+                
+                <div class="content-section">
+                    <div class="row g-4 justify-content-center">
+                        <!-- 30 Days Plan -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-card hover-item">
+                                <div class="product-badge">Popular</div>
+                                <div class="product-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <h3 class="product-title">Starter Plan</h3>
+                                <div class="product-duration">30 Days</div>
+                                <div class="product-price">
+                                    <span class="currency">$</span>
+                                    <span class="amount">19</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i> AI Face Recognition</li>
+                                    <li><i class="fas fa-check"></i> GPS Location Tracking</li>
+                                    <li><i class="fas fa-check"></i> Real-time Dashboard</li>
+                                    <li><i class="fas fa-check"></i> Basic Reports</li>
+                                    <li><i class="fas fa-check"></i> Email Support</li>
+                                    <li><i class="fas fa-times text-muted"></i> Advanced Analytics</li>
+                                    <li><i class="fas fa-times text-muted"></i> API Access</li>
+                                </ul>
+                                <button class="btn btn-primary btn-lg w-100 mt-4">Get Started</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 6 Months Plan -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-card hover-item featured">
+                                <div class="product-badge">Best Value</div>
+                                <div class="product-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <h3 class="product-title">Professional Plan</h3>
+                                <div class="product-duration">6 Months</div>
+                                <div class="product-price">
+                                    <span class="currency">$</span>
+                                    <span class="amount">89</span>
+                                    <span class="period">/6 months</span>
+                                </div>
+                                <div class="product-savings">Save 25%</div>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i> AI Face Recognition</li>
+                                    <li><i class="fas fa-check"></i> GPS Location Tracking</li>
+                                    <li><i class="fas fa-check"></i> Real-time Dashboard</li>
+                                    <li><i class="fas fa-check"></i> Advanced Reports</li>
+                                    <li><i class="fas fa-check"></i> Priority Support</li>
+                                    <li><i class="fas fa-check"></i> Advanced Analytics</li>
+                                    <li><i class="fas fa-times text-muted"></i> API Access</li>
+                                </ul>
+                                <button class="btn btn-primary btn-lg w-100 mt-4">Get Started</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 1 Year Plan -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-card hover-item">
+                                <div class="product-badge">Enterprise</div>
+                                <div class="product-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h3 class="product-title">Enterprise Plan</h3>
+                                <div class="product-duration">12 Months</div>
+                                <div class="product-price">
+                                    <span class="currency">$</span>
+                                    <span class="amount">159</span>
+                                    <span class="period">/year</span>
+                                </div>
+                                <div class="product-savings">Save 35%</div>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i> AI Face Recognition</li>
+                                    <li><i class="fas fa-check"></i> GPS Location Tracking</li>
+                                    <li><i class="fas fa-check"></i> Real-time Dashboard</li>
+                                    <li><i class="fas fa-check"></i> Advanced Reports</li>
+                                    <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
+                                    <li><i class="fas fa-check"></i> Advanced Analytics</li>
+                                    <li><i class="fas fa-check"></i> Full API Access</li>
+                                </ul>
+                                <button class="btn btn-primary btn-lg w-100 mt-4">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features Comparison -->
+                <div class="section-divider"></div>
+                <div class="content-section">
+                    <h2 class="section-title">Why Choose Our Pro Versions?</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-highlight">
+                                <div class="feature-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <h5>24/7 Support</h5>
+                                <p>Round-the-clock technical support from our expert team.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-highlight">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h5>Advanced Analytics</h5>
+                                <p>Detailed insights and reports to optimize your workforce management.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-highlight">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h5>Enterprise Security</h5>
+                                <p>Bank-level encryption and security protocols to protect your data.</p>
+                            </div>
+                        </div>
+                         <div class="col-lg-3 col-md-6">
+                            <div class="feature-highlight">
+                                <div class="feature-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h5>Lightning Fast</h5>
+                                <p>Process attendance records in milliseconds with our optimized AI engine.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div class="page-content" id="contact">
+            <div class="container-fluid">
+                <h1 class="page-title">Contact Us</h1>
+                <div class="content-section">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form class="contact-form" id="contactForm">
+                                <h3 class="mb-4">Get In Touch</h3>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contact" class="form-label">Contact Number</label>
+                                        <input type="tel" class="form-control" id="contact" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-select" id="gender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="city" class="form-label">City</label>
+                                        <input type="text" class="form-control" id="city" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="state" class="form-label">State</label>
+                                        <input type="text" class="form-control" id="state" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="pincode" class="form-label">Pincode</label>
+                                        <input type="text" class="form-control" id="pincode" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6">
+                            
+                            <!-- Contact Info -->
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <h6>Address</h6>
+                                        <p>123 Tech Street, AI Valley, Techland 12345</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <h6>Phone</h6>
+                                        <p>+1 (555) 123-4567</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h6>Email</h6>
+                                        <p>info@aiattendance.com</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <h6>Business Hours</h6>
+                                        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                                    </div>
+                                </div>
+                                <!-- design newsletter -->
+                                <div class="newsletter mt-4">
+                                    <h5>Subscribe to Our Newsletter</h5>
+                                    <p>Stay updated with the latest news and offers from AI Attendance System.</p>
+                                    <form id="newsletterForm">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" placeholder="Enter your email" required>
+                                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <!-- About Us -->
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <h5>About Us</h5>
+                        <p style="text-align: justify;">We are committed to delivering top-notch AI attendance solutions to meet your business needs.
+                            Traditional attendance systems often struggle to keep up with the demands of modern workplaces. Manual registers, punch cards, and even biometric systems have limitations, such as inefficiency, lack of real-time tracking, and the possibility of manipulation.
+                        </p>
+                    </div>
+                    <!-- Quick Links -->
+                    <div class="col-md-3 mb-4 mb-md-0">
+                        <h5>Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" data-page="home">Home</a></li>
+                            <li><a href="#" data-page="about">About</a></li>
+                            <li><a href="#" data-page="team">Our Team</a></li>
+                            <li><a href="#" data-page="services">Services</a></li>
+                            <li><a href="#" data-page="products">Products</a></li>
+                            <li><a href="#" data-page="contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="col-md-3 mb-4 mb-md-0">
+                        <h5>Contact Info</h5>
+                        <p class="contact"><strong>Phone:</strong> +1 (555) 123-4567</p>
+                        <p class="contact"><strong>Email:</strong> info@aiattendance.com</p>
+                        <p class="contact"><strong>Address:</strong> 123 Tech Street, AI Valley, Techland 12345</p>
+                    </div>
+                </div>
+                <div class="footer-bottom text-center mt-4">
+                    &copy; 2025 AI Attendance System. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+     <script>
+    window.addEventListener("load", function () {
+      setTimeout(() => {
+        document.getElementById("preloader").style.display = "none";
+        // document.getElementById("main-content").style.display = "block";
+      }, 3000); // 3 seconds
+    });
+  </script>  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
