@@ -1212,7 +1212,6 @@ html {
 .popup-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
 }
 
 .popup-image {
@@ -1227,7 +1226,7 @@ html {
 }
 
 .popup-details {
-  padding: 30px;
+  padding: 20px;
 }
 
 .project-description {
@@ -1393,6 +1392,13 @@ html {
     }
     #fix{
         margin: 0;
+    }
+    .popup-grid{
+        grid-template-columns: 1fr;
+    }
+    .popup-content {
+        max-width: 100%;
+        margin: 5% auto;
     }
     
 }
