@@ -533,6 +533,94 @@ if (secondLogo) {
     });
 }
 
+// Project Data
+const projects = [
+  {
+    id: 1,
+    name: "AI GPS Attendance Monitoring System",
+    description: "Revolutionary attendance system combining AI face recognition with GPS location verification to ensure accurate attendance tracking for educational institutions and businesses.",
+    image: "/logo.png",
+    tech: ["AI", "GPS", "Cloud", "Facial Recognition", "Geofencing", "Analytics"],
+    date: "Launching January 2026",
+    team: "6 Team Members",
+    features: [
+      "Real-time face recognition with 99.9% accuracy",
+      "GPS location verification with geofencing",
+      "Multi-platform support (Web, iOS, Android)",
+      "Advanced reporting dashboard for administrators",
+      "Customizable geofencing for different locations",
+      "Secure cloud storage with end-to-end encryption",
+      "Offline mode for areas with poor connectivity",
+      "Real-time notifications for attendance anomalies"
+    ]
+  }
+  // Add more projects as needed
+];
+
+// DOM Elements
+const projectPopup = document.getElementById('projectPopup');
+const closeBtn = document.querySelector('.close-btn');
+const closePopupBtn = document.querySelector('.close-popup');
+const contactBtn = document.querySelector('.contact-btn');
+
+// Show Project Popup
+function showProjectPopup(projectId) {
+  const project = projects.find(p => p.id === projectId);
+
+  // Populate features
+  const featuresContainer = document.getElementById('popupProjectFeatures');
+  featuresContainer.innerHTML = '';
+  project.features.forEach(feature => {
+    const li = document.createElement('li');
+    li.textContent = feature;
+    featuresContainer.appendChild(li);
+  });
+
+  // Show popup
+  projectPopup.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+// Close Popup
+function closeProjectPopup() {
+  projectPopup.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// Event Listeners
+document.querySelectorAll('.project-overlay .btn').forEach(button => {
+  button.addEventListener('click', function(e) {
+    e.preventDefault();
+    const projectCard = this.closest('.project-card');
+    const projectId = projectCard.dataset.projectId ? parseInt(projectCard.dataset.projectId) : 1;
+    showProjectPopup(projectId);
+  });
+});
+
+closeBtn.addEventListener('click', closeProjectPopup);
+closePopupBtn.addEventListener('click', closeProjectPopup);
+
+contactBtn.addEventListener('click', function() {
+  closeProjectPopup();
+  showPage('contact');
+  document.querySelector('.nav-link[data-page="contact"]').click();
+});
+
+// Close popup when clicking outside content
+projectPopup.addEventListener('click', function(e) {
+  if (e.target === projectPopup) {
+    closeProjectPopup();
+  }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && projectPopup.style.display === 'block') {
+    closeProjectPopup();
+  }
+});
+
+
 console.log(`
 🤖 AI Attendance System Website
 =================================
