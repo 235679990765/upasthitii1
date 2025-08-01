@@ -7,7 +7,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #ffffff;
+      background-color: #ffffff; 
       display: flex;
       align-items: center;
       justify-content: center;
@@ -765,7 +765,7 @@ h3{
 }
 
 /* Responsive Design */
-@media (max-width: 991.98px) {
+@media (max-width: 1260.98px) {
     .sidebar {
         transform: translateX(-100%);
     }
@@ -798,11 +798,15 @@ h3{
     .responsive-page-avatars {
         display: flex;
     }
-    #image{
-        display: none;
-    }
+    
     .contact{
         text-align: justify;
+    }
+}
+
+@media (max-width:996px){
+    #image{
+        display: none;
     }
 }
 
@@ -1101,7 +1105,7 @@ html {
 }
 
 /* Responsive Sidebar Improvements */
-@media (max-width: 991.98px) {
+@media (max-width: 1260.98px) {
     .sidebar {
         transform: translateX(-100%);
         width: 280px;
