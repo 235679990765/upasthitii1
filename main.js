@@ -493,6 +493,45 @@ function showNewsletterMessage(message, type) {
         }, 5000);
     }
 }
+// Add logo click handler
+const logo = document.getElementById('logo');
+if (logo) {
+    logo.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Update navigation
+        navLinks.forEach(nav => nav.classList.remove('active'));
+        document.querySelector('.nav-link[data-page="home"]').classList.add('active');
+        
+        // Update page avatars
+        const pageAvatars = document.querySelectorAll('.responsive-page-avatars .page-avatar');
+        pageAvatars.forEach(avatar => avatar.classList.remove('active'));
+        document.querySelector('.page-avatar[data-page="home"]').classList.add('active');
+        
+        // Show home page
+        showPage('home');
+    });
+}
+
+// If you also want the second logo to work the same way
+const secondLogo = document.querySelector('.second-logo');
+if (secondLogo) {
+    secondLogo.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Update navigation
+        navLinks.forEach(nav => nav.classList.remove('active'));
+        document.querySelector('.nav-link[data-page="home"]').classList.add('active');
+        
+        // Update page avatars
+        const pageAvatars = document.querySelectorAll('.responsive-page-avatars .page-avatar');
+        pageAvatars.forEach(avatar => avatar.classList.remove('active'));
+        document.querySelector('.page-avatar[data-page="home"]').classList.add('active');
+        
+        // Show home page
+        showPage('home');
+    });
+}
 
 console.log(`
 🤖 AI Attendance System Website
