@@ -1621,7 +1621,9 @@ html {
     .contact-info {
         padding: 1.5rem;
     }
-
+    .contact {
+        text-align: center;
+    }
 
     .about-stats {
         padding: 1.5rem;
@@ -1676,5 +1678,8 @@ html {
     .page-avatar::after {
         font-size: 1.5rem;
         margin-top: 3px;
+    }
+    .contact {
+        text-align: center;
     }
 }
