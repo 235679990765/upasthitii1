@@ -7,6 +7,7 @@
     <title>Upasthitii</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet">
@@ -14,9 +15,9 @@
 <body>
 
     <!-- Preloader Section -->
-  <div id="preloader">
+  <!-- <div id="preloader">
     <img src="/logo.png" alt="Loading...">
-  </div>
+  </div> -->
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
@@ -836,6 +837,7 @@
                                     <div class="col-md-6">
                                         <label for="contact" class="form-label">Contact Number</label>
                                         <input type="tel" name="contact" class="form-control" id="contact" placeholder="+1 234 567 890" required>
+                                        <input type="hidden" name="contact" id="fullPhone">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="gender" class="form-label">Gender</label>
@@ -851,8 +853,8 @@
                                         <input type="text" name="company" class="form-control" id="company" placeholder="Your Company" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="project-type" class="form-label">Project Type</label>
-                                        <select class="form-select" name="project type" id="project-type" required>
+                                        <label for="project_type" class="form-label">Project Type</label>
+                                        <select class="form-select" name="project type" id="project_type" required>
                                             <option value="">Select Type</option>
                                             <option value="fullstack">Full Stack Website</option>
                                             <option value="frontend">Only Frontend</option>
@@ -862,20 +864,10 @@
                                             <option value="other">Other</option>
                                         </select>
                                     </div>
+                                    
                                     <div class="col-md-6">
-                                        <label for="service" class="form-label">Service</label>
-                                        <select class="form-select" name="service" id="service" required>
-                                            <option value="">Select Service</option>
-                                            <option value="consulting">Consulting</option>
-                                            <option value="development">Development</option>
-                                            <option value="design">Design</option>
-                                            <option value="support">Support</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="product-budget" class="form-label">Product Budget</label>
-                                        <select class="form-select" name="product budget" id="product-budget" required>
+                                        <label for="product_budget" class="form-label">Product Budget</label>
+                                        <select class="form-select" name="product budget" id="product_budget" required>
                                             <option value="">Select Budget Range</option>
                                             <option value="$1,000 - $1,500">$1,000 - $1,500</option>
                                             <option value="$1,500 - $2,000">$1,500 - $2,000</option>
@@ -888,15 +880,34 @@
                                             <option value="$5,000+">$5,000+</option>
                                         </select>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <label for="product_timeline" class="form-label">Project Timeline</label>
+                                        <select class="form-select" name="product timeline" id="product_timeline" required>
+                                            <option value="">Select timeline</option>
+                                            <option value="ASAP">ASAP</option>
+                                            <option value="1-2 weeks">1-2 weeks</option>
+                                            <option value="2-4 weeks">2-4 weeks</option>
+                                            <option value="1-2 months">1-2 months</option>
+                                            <option value="2+ months">2+ months</option>
+                                        </select>
+                                    </div>
                                     
                                     <div class="col-md-6">
-                                        <label for="city" class="form-label">City</label>
-                                        <input type="text" name="city" class="form-control" id="city" placeholder="Your City" required>
+                                        <label for="service" class="form-label">Service</label>
+                                        <select class="form-select" name="service" id="service" required>
+                                            <option value="">Select Service</option>
+                                            <option value="consulting">Consulting</option>
+                                            <option value="development">Development</option>
+                                            <option value="design">Design</option>
+                                            <option value="support">Support</option>
+                                            <option value="other">Other</option>
+                                        </select>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="state" class="form-label">State</label>
-                                        <select  class="form-control" name="state" id="state" required>
+                                        <select class="form-select" name="state" id="state" required>
                                             <option value="">Select State</option>
                                             <option value="Andhra Pradesh">Andhra Pradesh</option>
                                             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -938,16 +949,13 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="product-timeline" class="form-label">Project Timeline</label>
-                                        <select class="form-select" name="product timeline" id="product-timeline" required>
-                                            <option value="">Select timeline</option>
-                                            <option value="ASAP">ASAP</option>
-                                            <option value="1-2 weeks">1-2 weeks</option>
-                                            <option value="2-4 weeks">2-4 weeks</option>
-                                            <option value="1-2 months">1-2 months</option>
-                                            <option value="2+ months">2+ months</option>
-                                        </select>
+                                        <label for="city" class="form-label">City</label>
+                                        <input type="text" name="city" class="form-control" id="city" placeholder="Your City" required>
                                     </div>
+
+                                    
+
+                                    
                                     <div class="col-md-6">
                                         <label for="pincode" class="form-label">Pincode</label>
                                         <input type="text" name="pincode" class="form-control" id="pincode" placeholder="063-966" required>
@@ -1053,7 +1061,7 @@
 
         <!-- Floating WhatsApp Chat Button -->
         <div id="whatsapp-chatbot">
-            <button class="chat-toggle" onclick="toggleChat()">
+            <button class="chat-toggle" onclick="toggleChat() ">
                 <i class="fab fa-whatsapp"></i>
             </button>
             <div class="chat-popup" id="chatPopup">
@@ -1169,9 +1177,12 @@
                 }
             });
     </script>
+
    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js"></script>
     <script src="main.js"></script>
 
 </body>

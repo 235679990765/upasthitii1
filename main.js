@@ -241,15 +241,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const container = document.createElement("div");
         container.id = "toastContainer";
         container.style.position = "fixed";
-        container.style.bottom = "20px";
+        container.style.top = "20px"; // changed from bottom to top
         container.style.right = "20px";
         container.style.zIndex = "1055";
         container.style.display = "flex";
         container.style.flexDirection = "column";
         container.style.gap = "10px";
+        container.style.transition = "top 0.3s ease";
         document.body.appendChild(container);
     }
 });
+
 
 // Show Error Messages
 function showErrorMessages(errors) {

@@ -684,7 +684,7 @@ body {
 
 
 .page-avatar:hover {
-    box-shadow: 0 8px 25px rgba(28, 99, 241, 0.719);
+    box-shadow: 0 8px 0px rgba(28, 99, 241, 0.719);
 }
 
 
@@ -1402,7 +1402,7 @@ html {
 /* toast */
 #toastcontainer {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
     z-index: 1055;
     display: flex;
@@ -1425,6 +1425,7 @@ html {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 /* chat-bot */
 #whatsapp-chatbot {
@@ -1519,6 +1520,7 @@ html {
 
     .main-content {
         margin-left: 0;
+        margin-bottom: 50px;
     }
 
     .page-content {
@@ -1543,6 +1545,16 @@ html {
 
     .responsive-page-avatars {
         display: flex;
+        position: fixed;         
+        bottom: 0;             
+        left: 0;
+        right: 0;
+        background: rgb(1 11 32 / 95%); 
+        z-index: 1050;
+        justify-content: space-around;
+        padding: 0.5rem 0;
+        backdrop-filter: blur(8px);
+
     }
 
     #image {
