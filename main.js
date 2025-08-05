@@ -8,86 +8,100 @@ const contactForm = document.getElementById('contactForm');
 function handleResponsiveAvatars() {
     const pageAvatars = document.querySelectorAll('.responsive-page-avatars .page-avatar');
     pageAvatars.forEach(avatar => {
-        avatar.addEventListener('click', function() {
+        avatar.addEventListener('click', function () {
             const targetPage = this.getAttribute('data-page');
             showPage(targetPage);
-            // Deactivate all avatars
             pageAvatars.forEach(a => a.classList.remove('active'));
-            // Activate clicked avatar
             this.classList.add('active');
         });
     });
 }
 
-// Handle footer navigation links
 function handleFooterNavigation() {
     const footerLinks = document.querySelectorAll('footer a[data-page]');
     footerLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetPage = this.getAttribute('data-page');
-            
-            // Update sidebar navigation
+
             navLinks.forEach(nav => nav.classList.remove('active'));
             const correspondingSidebarLink = document.querySelector(`.nav-link[data-page="${targetPage}"]`);
             if (correspondingSidebarLink) {
                 correspondingSidebarLink.classList.add('active');
             }
-            
-            // Update page avatars
+
             const pageAvatars = document.querySelectorAll('.responsive-page-avatars .page-avatar');
             pageAvatars.forEach(avatar => avatar.classList.remove('active'));
             const correspondingAvatar = document.querySelector(`.page-avatar[data-page="${targetPage}"]`);
             if (correspondingAvatar) {
                 correspondingAvatar.classList.add('active');
             }
-            
-            // Show the page
+
             showPage(targetPage);
         });
     });
 }
-document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function () {
     initializeNavigation();
-    // initializeContactForm();
     addScrollEffects();
     handleResponsiveAvatars();
     handleFooterNavigation();
+
+    // Newsletter Form AJAX
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(newsletterForm);
+            const messageArea = document.createElement('div');
+
+            try {
+                const response = await fetch(newsletterForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { Accept: 'application/json' }
+                });
+
+                messageArea.className = 'newsletter-message alert mt-2';
+                if (response.ok) {
+                    messageArea.classList.add('alert-success');
+                    messageArea.innerHTML = `<i class="fas fa-check-circle me-2"></i>Subscribed successfully!`;
+                    newsletterForm.reset();
+                } else {
+                    messageArea.classList.add('alert-danger');
+                    messageArea.innerHTML = `<i class="fas fa-exclamation-circle me-2"></i>Subscription failed. Try again.`;
+                }
+            } catch (err) {
+                messageArea.classList.add('alert-danger');
+                messageArea.innerHTML = `<i class="fas fa-exclamation-circle me-2"></i>Something went wrong.`;
+            }
+
+            newsletterForm.appendChild(messageArea);
+            setTimeout(() => messageArea.remove(), 5000);
+        });
+    }
 });
 
-// Navigation System
+// Navigation
 function initializeNavigation() {
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
-            
             const targetPage = this.getAttribute('data-page');
-            
-            // Remove active class from all nav links
             navLinks.forEach(nav => nav.classList.remove('active'));
-            
-            // Add active class to clicked nav link
             this.classList.add('active');
-            
-            // Hide all page contents
             pageContents.forEach(page => page.classList.remove('active'));
-            
-            // Show target page
             const targetPageElement = document.getElementById(targetPage);
             if (targetPageElement) {
                 targetPageElement.classList.add('active');
-                
-                // Add page transition effect
                 targetPageElement.style.opacity = '0';
                 targetPageElement.style.transform = 'translateY(20px)';
-                
                 setTimeout(() => {
                     targetPageElement.style.opacity = '1';
                     targetPageElement.style.transform = 'translateY(0)';
                 }, 50);
             }
-            
-            // Close sidebar on mobile after navigation
             if (window.innerWidth < 992) {
                 sidebar.classList.remove('show');
             }
@@ -95,256 +109,75 @@ function initializeNavigation() {
     });
 }
 
+// Toast Container for success/error messages
+function showToast(message, type = 'success') {
+    const toastContainer = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
 
-// Form Validation
-function validateForm(data) {
-    const errors = [];
-    
-    // Fullname validation
-    if (!data.fullname || !data.fullname.trim()) {
-        errors.push('Full name is required');
-    } else if (data.fullname.length < 3) {
-        errors.push('Full name must be at least 3 characters');
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!data.email.trim()) {
-        errors.push('Email is required');
-    } else if (!emailRegex.test(data.email)) {
-        errors.push('Please enter a valid email address');
-    }
-    
-    // Contact validation
-    const phoneRegex = /^[0-9]{10}$/;
-    if (!data.contact.trim()) {
-        errors.push('Contact number is required');
-    } else if (!phoneRegex.test(data.contact.replace(/\D/g, ''))) {
-        errors.push('Please enter a valid 10-digit contact number');
-    }
-    
-    // Gender validation
-    if (!data.gender) {
-        errors.push('Please select a gender');
-    }
-    
-    // City validation
-    if (!data.city.trim()) {
-        errors.push('City is required');
-    }
-    
-    // State validation
-    if (!data.state.trim()) {
-        errors.push('State is required');
-    }
-    
-    // Pincode validation
-    const pincodeRegex = /^[0-9]{6}$/;
-    if (!data.pincode.trim()) {
-        errors.push('Pincode is required');
-    } else if (!pincodeRegex.test(data.pincode)) {
-        errors.push('Please enter a valid 6-digit pincode');
-    }
-    
-    // Message validation
-    if (!data.message.trim()) {
-        errors.push('Message is required');
-    } else if (data.message.length < 10) {
-        errors.push('Message must be at least 10 characters');
-    }
-    
-    if (errors.length > 0) {
-        showErrorMessages(errors);
-        return false;
-    }
-    
-    return true;
-}
-
-// Show Error Messages
-function showErrorMessages(errors) {
-    // Remove existing error messages
-    removeExistingMessages();
-    
-    const errorContainer = document.createElement('div');
-    errorContainer.className = 'alert alert-danger';
-    errorContainer.innerHTML = `
-        <strong>Please fix the following errors:</strong>
-        <ul class="mb-0 mt-2">
-            ${errors.map(error => `<li>${error}</li>`).join('')}
-        </ul>
+    toast.className = `alert alert-${type} fade show`;
+    toast.style.minWidth = '250px';
+    toast.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+                ${message}
+            </div>
+            <button type="button" class="btn-close" onclick="this.parentElement.parentElement.remove()" style="border: none; background: transparent;"></button>
+        </div>
     `;
-    
-    contactForm.insertBefore(errorContainer, contactForm.firstChild);
-    
-    // Scroll to error messages
-    errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    
-    // Remove error message after 5 seconds
+
+    toastContainer.appendChild(toast);
+
     setTimeout(() => {
-        errorContainer.remove();
+        toast.remove();
     }, 5000);
 }
 
-// Show Success Message
-function showSuccessMessage() {
-    // Remove existing messages
-    removeExistingMessages();
-    
-    const successContainer = document.createElement('div');
-    successContainer.className = 'alert alert-success';
-    successContainer.innerHTML = `
-        <i class="fas fa-check-circle me-2"></i>
-        <strong>Success!</strong> Your message has been sent successfully. We'll get back to you soon.
-    `;
-    
-    contactForm.insertBefore(successContainer, contactForm.firstChild);
-    
-    // Scroll to success message
-    successContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    
-    // Remove success message after 5 seconds
-    setTimeout(() => {
-        successContainer.remove();
-    }, 5000);
-}
-
-// Remove Existing Messages
-function removeExistingMessages() {
-    const existingMessages = contactForm.querySelectorAll('.alert');
-    existingMessages.forEach(message => message.remove());
-}
-
-// Reset Form
-function resetForm() {
-    contactForm.reset();
-    
-    // Remove any validation classes
-    const formControls = contactForm.querySelectorAll('.form-control, .form-select');
-    formControls.forEach(control => {
-        control.classList.remove('is-valid', 'is-invalid');
-    });
-}
-
-// Add Scroll Effects
-function addScrollEffects() {
-    // Intersection Observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observe all cards and sections
-    const animatedElements = document.querySelectorAll(
-        '.feature-card, .benefit-card, .team-card, .solution-card, .contact-form, .contact-info, .about-stats'
-    );
-    
-    animatedElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(element);
-    });
-}
-
-// Utility Functions
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Add smooth hover effects to buttons
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.btn');
-    
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
-        });
-        
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-});
-
-// Add loading states to navigation
-navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        // Add loading effect
-        const icon = this.querySelector('i');
-        const originalIcon = icon.className;
-        
-        icon.className = 'fas fa-spinner fa-spin';
-        
-        setTimeout(() => {
-            icon.className = originalIcon;
-        }, 500);
-    });
-});
-
-// Add dynamic content loading effect
-function showPage(pageId) {
-    const page = document.getElementById(pageId);
-    if (page) {
-        // Hide all pages first
-        pageContents.forEach(p => {
-            p.classList.remove('active');
-            p.style.opacity = '0';
-        });
-        
-        // Show target page with animation
-        setTimeout(() => {
-            page.classList.add('active');
-            page.style.opacity = '1';
-        }, 150);
-    }
-}
-
-// Real-time form validation
+// Initialize form validation and submission
 if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+
+        if (!validateForm(data)) return;
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { Accept: 'application/json' }
+            });
+
+            if (response.ok) {
+                showToast('Message sent successfully!', 'success');
+                resetForm();
+            } else {
+                showToast('Failed to send message. Please try again.', 'danger');
+            }
+        } catch (err) {
+            showToast('Something went wrong. Please try later.', 'danger');
+        }
+    });
+
     const formInputs = contactForm.querySelectorAll('input, select, textarea');
-    
     formInputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            validateField(this);
-        });
-        
-        input.addEventListener('input', function() {
-            // Remove invalid state on input
-            this.classList.remove('is-invalid');
-            
-            // Add valid state for non-empty fields
-            if (this.value.trim()) {
-                this.classList.add('is-valid');
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => {
+            input.classList.remove('is-invalid');
+            if (input.value.trim()) {
+                input.classList.add('is-valid');
             }
         });
     });
 }
 
-// Individual field validation
 function validateField(field) {
     const value = field.value.trim();
     let isValid = true;
-    
+
     switch (field.id) {
-        case 'username':
+        case 'fullname':
             isValid = value.length >= 3;
             break;
         case 'email':
@@ -353,21 +186,22 @@ function validateField(field) {
         case 'contact':
             isValid = /^[0-9]{10}$/.test(value.replace(/\D/g, ''));
             break;
-        case 'pincode':
-            isValid = /^[0-9]{6}$/.test(value);
+        case 'gender':
+        case 'service':
+            isValid = value !== '';
             break;
         case 'city':
         case 'state':
             isValid = value.length >= 2;
             break;
-        case 'gender':
-            isValid = value !== '';
+        case 'pincode':
+            isValid = /^[0-9]{6}$/.test(value);
             break;
         case 'message':
             isValid = value.length >= 10;
             break;
     }
-    
+
     if (isValid) {
         field.classList.remove('is-invalid');
         field.classList.add('is-valid');
@@ -375,123 +209,135 @@ function validateField(field) {
         field.classList.remove('is-valid');
         field.classList.add('is-invalid');
     }
-    
+
     return isValid;
 }
 
-// Add keyboard shortcuts
-document.addEventListener('keydown', function(e) {
-    // Alt + number keys for navigation
-    if (e.altKey) {
-        switch (e.key) {
-            case '1':
-                e.preventDefault();
-                document.querySelector('[data-page="home"]').click();
-                break;
-            case '2':
-                e.preventDefault();
-                document.querySelector('[data-page="about"]').click();
-                break;
-            case '3':
-                e.preventDefault();
-                document.querySelector('[data-page="team"]').click();
-                break;
-            case '4':
-                e.preventDefault();
-                document.querySelector('[data-page="services"]').click();
-                break;
-            case '5':
-                e.preventDefault();
-                document.querySelector('[data-page="contact"]').click();
-                break;
-        }
+function validateForm(data) {
+    const fields = contactForm.querySelectorAll('input, select, textarea');
+    let isFormValid = true;
+
+    fields.forEach(field => {
+        const valid = validateField(field);
+        if (!valid) isFormValid = false;
+    });
+
+    if (!isFormValid) {
+        showToast("Please fix validation errors.", "danger");
+    }
+
+    return isFormValid;
+}
+
+function resetForm() {
+    contactForm.reset();
+    const inputs = contactForm.querySelectorAll('.form-control, .form-select');
+    inputs.forEach(el => el.classList.remove('is-valid', 'is-invalid'));
+}
+
+// Toast container setup (ensure this div exists in HTML)
+document.addEventListener("DOMContentLoaded", () => {
+    if (!document.getElementById("toastContainer")) {
+        const container = document.createElement("div");
+        container.id = "toastContainer";
+        container.style.position = "fixed";
+        container.style.bottom = "20px";
+        container.style.right = "20px";
+        container.style.zIndex = "1055";
+        container.style.display = "flex";
+        container.style.flexDirection = "column";
+        container.style.gap = "10px";
+        document.body.appendChild(container);
     }
 });
 
-// Newsletter Subscription Function
-function subscribeNewsletter() {
-    const emailInput = document.getElementById('newsletterEmail');
-    const email = emailInput.value.trim();
-    
-    if (!email) {
-        showNewsletterMessage('Please enter your email address.', 'error');
-        return;
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        showNewsletterMessage('Please enter a valid email address.', 'error');
-        return;
-    }
-    
-    // Simulate newsletter subscription
-    showNewsletterMessage('Thank you for subscribing to our newsletter!', 'success');
-    emailInput.value = '';
-}
-
-// Show Newsletter Message
-function showNewsletterMessage(message, type) {
-    // Remove existing messages
-    const existingMessages = document.querySelectorAll('.newsletter-message');
-    existingMessages.forEach(msg => msg.remove());
-    
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `newsletter-message alert alert-${type === 'success' ? 'success' : 'danger'} mt-2`;
-    messageDiv.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
-        ${message}
+// Show Error Messages
+function showErrorMessages(errors) {
+    removeExistingMessages();
+    const errorContainer = document.createElement('div');
+    errorContainer.className = 'alert alert-danger';
+    errorContainer.innerHTML = `
+        <strong>Please fix the following errors:</strong>
+        <ul class="mb-0 mt-2">${errors.map(err => `<li>${err}</li>`).join('')}</ul>
     `;
-    
-    const newsletterSection = document.querySelector('.newsletter-subscription');
-    if (newsletterSection) {
-        newsletterSection.appendChild(messageDiv);
-        
-        // Remove message after 5 seconds
-        setTimeout(() => {
-            messageDiv.remove();
-        }, 5000);
-    }
+    contactForm.insertBefore(errorContainer, contactForm.firstChild);
+    errorContainer.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => errorContainer.remove(), 5000);
 }
-// Add logo click handler
-const logo = document.getElementById('logo');
-if (logo) {
-    logo.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Update navigation
-        navLinks.forEach(nav => nav.classList.remove('active'));
-        document.querySelector('.nav-link[data-page="home"]').classList.add('active');
-        
-        // Update page avatars
-        const pageAvatars = document.querySelectorAll('.responsive-page-avatars .page-avatar');
-        pageAvatars.forEach(avatar => avatar.classList.remove('active'));
-        document.querySelector('.page-avatar[data-page="home"]').classList.add('active');
-        
-        // Show home page
-        showPage('home');
+
+// Show Success Message
+function showSuccessMessage() {
+    removeExistingMessages();
+    const successContainer = document.createElement('div');
+    successContainer.className = 'alert alert-success';
+    successContainer.innerHTML = `<i class="fas fa-check-circle me-2"></i>Message sent successfully! We'll get back to you soon.`;
+    contactForm.insertBefore(successContainer, contactForm.firstChild);
+    successContainer.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => successContainer.remove(), 5000);
+}
+
+// Remove Existing Messages
+function removeExistingMessages() {
+    const existing = contactForm.querySelectorAll('.alert');
+    existing.forEach(msg => msg.remove());
+}
+
+// Reset Form
+function resetForm() {
+    contactForm.reset();
+    const inputs = contactForm.querySelectorAll('.form-control, .form-select');
+    inputs.forEach(el => el.classList.remove('is-valid', 'is-invalid'));
+}
+
+// Scroll Effects
+function addScrollEffects() {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    const elements = document.querySelectorAll(
+        '.feature-card, .benefit-card, .team-card, .solution-card, .contact-form, .contact-info, .about-stats'
+    );
+
+    elements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
     });
 }
 
-// If you also want the second logo to work the same way
-const secondLogo = document.querySelector('.second-logo');
-if (secondLogo) {
-    secondLogo.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Update navigation
-        navLinks.forEach(nav => nav.classList.remove('active'));
-        document.querySelector('.nav-link[data-page="home"]').classList.add('active');
-        
-        // Update page avatars
-        const pageAvatars = document.querySelectorAll('.responsive-page-avatars .page-avatar');
-        pageAvatars.forEach(avatar => avatar.classList.remove('active'));
-        document.querySelector('.page-avatar[data-page="home"]').classList.add('active');
-        
-        // Show home page
-        showPage('home');
-    });
+// Show Page
+function showPage(pageId) {
+    const page = document.getElementById(pageId);
+    if (page) {
+        pageContents.forEach(p => {
+            p.classList.remove('active');
+            p.style.opacity = '0';
+        });
+        setTimeout(() => {
+            page.classList.add('active');
+            page.style.opacity = '1';
+        }, 150);
+    }
 }
+
+// Button hover effect
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => button.style.transform = 'translateY(-2px)');
+        button.addEventListener('mouseleave', () => button.style.transform = 'translateY(0)');
+    });
+});
 
 // Project Data
 const projects = [
@@ -579,6 +425,9 @@ document.addEventListener('keydown', function(e) {
     closeProjectPopup();
   }
 });
+
+
+
 
 
 console.log(`

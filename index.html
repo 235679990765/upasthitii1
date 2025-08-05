@@ -83,8 +83,12 @@
                             <p class="lead text-muted mb-4">
                                 Revolutionize your workplace attendance management with cutting-edge AI face recognition and GPS tracking technology.
                             </p>
-                            <button class="btn btn-primary btn-lg me-3">Get Started</button>
-                            <button class="btn btn-outline-primary btn-lg">Learn More</button>
+
+                            <!-- Place this in your HTML (e.g., homepage) -->
+                            <button id="getStartedBtn" class="btn btn-primary btn-lg me-3">Get Started</button>
+                            <button id="viewProjectBtn" class="btn btn-outline-primary btn-lg">Our Solution</button>
+
+
                         </div>
                         <div class="col-lg-6">
                             <div class="hero-image">
@@ -198,13 +202,13 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <p class="lead" style="font-weight: 600;">
-                                Traditional attendance systems often struggle to keep up with the demands of modern workplaces. Manual registers, punch cards, and even biometric systems have limitations, such as inefficiency, lack of real-time tracking, and the possibility of manipulation.
-                            </p>
-                            <p class="lead" style="font-weight: 600;">
-                                Basically monitoring attendance is a serious organizational management function, mainly in schools, workplaces, and other formal settings. Conventional techniques for tracking attendance, including manual roll calls or swipe cards, tend to be cumbersome, error prone, and vulnerable to abuse such as proxy attendance.
-                            </p>
-                            <p class="lead" style="font-weight: 600;">
-                                With the growth of technology, Artificial Intelligence (AI) and Global Positioning System (GPS) have become effective tools to automate and increase the accuracy of attendance monitoring systems.
+                                Traditional attendance systems often struggle to keep up with the demands of modern workplaces. Manual registers, punch cards, and even biometric systems have limitations, such as inefficiency, lack of real-time tracking, and the possibility of manipulation.</br><br>
+
+                                Monitoring attendance is a serious organizational management function, particularly in schools, workplaces, and other formal settings. Conventional techniques like manual roll calls or swipe cards tend to be cumbersome, error-prone, and vulnerable to abuse such as proxy attendance. <br><br>
+
+                                With the rapid growth of technology, Artificial Intelligence (AI) and the Global Positioning System (GPS) have emerged as transformative tools to automate and improve the accuracy of attendance monitoring. These technologies enable real-time verification, eliminate human error, and offer location-based validation — ensuring that attendance is both authentic and tamper-proof.<br><br>
+
+                                AI-powered facial recognition can instantly identify individuals, while GPS tracking confirms their presence at designated locations, making modern attendance systems not just smarter but also significantly more secure and reliable.
                             </p>
                         </div>
                         <div class="col-lg-4">
@@ -214,12 +218,16 @@
                                     <p>Accuracy Rate</p>
                                 </div>
                                 <div class="stat-item">
-                                    <h3 class="text-primary">50+</h3>
-                                    <p>Companies Trust Us</p>
+                                    <h3 class="text-primary">5+</h3>
+                                    <p>Team Members</p>
                                 </div>
                                 <div class="stat-item">
                                     <h3 class="text-primary">24/7</h3>
                                     <p>Support Available</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3 class="text-primary">NA</h3>
+                                    <p>Tech Stack Integrations</p>
                                 </div>
                             </div>
                         </div>
@@ -814,20 +822,20 @@
                 <div class="content-section">
                     <div class="row">
                         <div class="col-lg-6">
-                            <form class="contact-form" id="contactForm">
+                            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xvgqwwkk" method="POST">
                                 <h3 class="mb-4">Get In Touch</h3>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label for="fullname" class="form-label">Full name</label>
-                                        <input type="text" name="fullname" class="form-control" id="fullname" required>
+                                        <input type="text" name="fullname" class="form-control" id="fullname" placeholder="John Deo" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" name="email" class="form-control" id="email" required>
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="john@example.com" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="contact" class="form-label">Contact Number</label>
-                                        <input type="tel" name="contact" class="form-control" id="contact" required>
+                                        <input type="tel" name="contact" class="form-control" id="contact" placeholder="+1 234 567 890" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="gender" class="form-label">Gender</label>
@@ -835,6 +843,22 @@
                                             <option value="">Select Gender</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="company" class="form-label">Company</label>
+                                        <input type="text" name="company" class="form-control" id="company" placeholder="Your Company" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="project-type" class="form-label">Project Type</label>
+                                        <select class="form-select" name="project type" id="project-type" required>
+                                            <option value="">Select Type</option>
+                                            <option value="fullstack">Full Stack Website</option>
+                                            <option value="frontend">Only Frontend</option>
+                                            <option value="backend">Only Backend</option>
+                                            <option value="static">Static Website</option>
+                                            <option value="dynamic">Dynamic Website</option>
                                             <option value="other">Other</option>
                                         </select>
                                     </div>
@@ -850,16 +874,83 @@
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="city" class="form-label">City</label>
-                                        <input type="text" name="city" class="form-control" id="city" required>
+                                        <label for="product-budget" class="form-label">Product Budget</label>
+                                        <select class="form-select" name="product budget" id="product-budget" required>
+                                            <option value="">Select Budget Range</option>
+                                            <option value="$1,000 - $1,500">$1,000 - $1,500</option>
+                                            <option value="$1,500 - $2,000">$1,500 - $2,000</option>
+                                            <option value="$2,000 - $2,500">$2,000 - $2,500</option>
+                                            <option value="$2,500 - $3,000">$2,500 - $3,000</option>
+                                            <option value="$3,000 - $3,500">$3,000 - $3,500</option>
+                                            <option value="$3,500 - $4,000">$3,500 - $4,000</option>
+                                            <option value="$4,000 - $4,500">$4,000 - $4,500</option>
+                                            <option value="$4,500 - $5,000">$4,500 - $5,000</option>
+                                            <option value="$5,000+">$5,000+</option>
+                                        </select>
                                     </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="city" class="form-label">City</label>
+                                        <input type="text" name="city" class="form-control" id="city" placeholder="Your City" required>
+                                    </div>
+
                                     <div class="col-md-6">
                                         <label for="state" class="form-label">State</label>
-                                        <input type="text" name="state" class="form-control" id="state" required>
+                                        <select  class="form-control" name="state" id="state" required>
+                                            <option value="">Select State</option>
+                                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                            <option value="Assam">Assam</option>
+                                            <option value="Bihar">Bihar</option>
+                                            <option value="Chhattisgarh">Chhattisgarh</option>
+                                            <option value="Goa">Goa</option>
+                                            <option value="Gujarat">Gujarat</option>
+                                            <option value="Haryana">Haryana</option>
+                                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                            <option value="Jharkhand">Jharkhand</option>
+                                            <option value="Karnataka">Karnataka</option>
+                                            <option value="Kerala">Kerala</option>
+                                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                            <option value="Maharashtra">Maharashtra</option>
+                                            <option value="Manipur">Manipur</option>
+                                            <option value="Meghalaya">Meghalaya</option>
+                                            <option value="Mizoram">Mizoram</option>
+                                            <option value="Nagaland">Nagaland</option>
+                                            <option value="Odisha">Odisha</option>
+                                            <option value="Punjab">Punjab</option>
+                                            <option value="Rajasthan">Rajasthan</option>
+                                            <option value="Sikkim">Sikkim</option>
+                                            <option value="Tamil Nadu">Tamil Nadu</option>
+                                            <option value="Telangana">Telangana</option>
+                                            <option value="Tripura">Tripura</option>
+                                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                            <option value="Uttarakhand">Uttarakhand</option>
+                                            <option value="West Bengal">West Bengal</option>
+                                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                            <option value="Chandigarh">Chandigarh</option>
+                                            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                            <option value="Delhi">Delhi</option>
+                                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                            <option value="Ladakh">Ladakh</option>
+                                            <option value="Lakshadweep">Lakshadweep</option>
+                                            <option value="Puducherry">Puducherry</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="product-timeline" class="form-label">Project Timeline</label>
+                                        <select class="form-select" name="product timeline" id="product-timeline" required>
+                                            <option value="">Select timeline</option>
+                                            <option value="ASAP">ASAP</option>
+                                            <option value="1-2 weeks">1-2 weeks</option>
+                                            <option value="2-4 weeks">2-4 weeks</option>
+                                            <option value="1-2 months">1-2 months</option>
+                                            <option value="2+ months">2+ months</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="pincode" class="form-label">Pincode</label>
-                                        <input type="text" name="pincode" class="form-control" id="pincode" required>
+                                        <input type="text" name="pincode" class="form-control" id="pincode" placeholder="063-966" required>
                                     </div>
                                     <div class="col-12">
                                         <label for="message" class="form-label">Message</label>
@@ -871,45 +962,84 @@
                                 </div>
                             </form>
                         </div>
+
+                        
+
+                        <!-- Contact Info -->
                         <div class="col-lg-6">
-                            
-                            <!-- Contact Info -->
                             <div class="contact-info">
+                                
                                 <div class="contact-item">
                                     <i class="fas fa-map-marker-alt"></i>
                                     <div>
                                         <h6>Address</h6>
-                                        <p>123 Tech Street, AI Valley, Techland 12345</p>
+                                        <p>Ahmedabad, Gujarat, India</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-phone"></i>
                                     <div>
                                         <h6>Phone</h6>
-                                        <p>+1 (555) 123-4567</p>
+                                        <p>+91 9369851904</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-envelope"></i>
                                     <div>
                                         <h6>Email</h6>
-                                        <p>info@aiattendance.com</p>
+                                        <p>info@upasthitii.com</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-clock"></i>
                                     <div>
                                         <h6>Business Hours</h6>
-                                        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                                        <p>Mon - Fri : 9:00 AM - 6:00 PM</p>
                                     </div>
                                 </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-share-alt"></i>
+                                    <div>
+                                        <h6>Follow Us</h6>
+                                        <p>
+                                            <a href="https://facebook.com/upasthitii" target="_blank"><i class="fab fa-facebook-f me-2"></i></a>
+                                            <a href="https://twitter.com/upasthitii" target="_blank"><i class="fab fa-twitter me-2"></i></a>
+                                            <a href="https://instagram.com/upasthitii" target="_blank"><i class="fab fa-instagram me-2"></i></a>
+                                            <a href="https://linkedin.com/company/upasthitii" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="contact-item">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <div>
+                                        <h6>WhatsApp</h6>
+                                        <p><a href="https://wa.me/919369851904" target="_blank">Chat Now</a></p>
+                                    </div>
+                                </div> -->
+
+                                <div class="contact-item">
+                                    <i class="fas fa-star"></i>
+                                    <div>
+                                        <h6>Why Choose Us?</h6>
+                                        <ul class="list-unstyled mb-0">
+                                            <li>✅ Free consultation & quote</li>
+                                            <li>✅ 24-hour response guarantee</li>
+                                            <li>✅ Transparent pricing</li>
+                                            <li>✅ Ongoing support included</li>
+                                            <li>✅ 100% satisfaction guarantee</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
                                 <!-- design newsletter -->
                                 <div class="newsletter mt-4">
                                     <h5>Subscribe to Our Newsletter</h5>
                                     <p>Stay updated with the latest news and offers from AI Attendance System.</p>
-                                    <form id="newsletterForm">
+                                    <form id="newsletterForm" action="https://formspree.io/f/xvgqwwkk" method="POST">
                                         <div class="input-group">
-                                            <input type="email" class="form-control" placeholder="Enter your email" required>
+                                            <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                                             <button class="btn btn-primary" type="submit">Subscribe</button>
                                         </div>
                                     </form>
@@ -920,6 +1050,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- Floating WhatsApp Chat Button -->
+        <div id="whatsapp-chatbot">
+            <button class="chat-toggle" onclick="toggleChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+            <div class="chat-popup" id="chatPopup">
+                <div class="chat-header">
+                    <strong>Upasthitii Support</strong>
+                    <span onclick="toggleChat()">&times</span>
+                </div>
+                <div class="chat-body">
+                    <p>Hello! 👋<br>How can we help you?</p>
+                    <a href="https://wa.me/919369851904" target="_blank" class="btn btn-success w-100 mt-2">
+                        <i class="fab fa-whatsapp me-1"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Footer Section -->
         <footer>
@@ -946,9 +1096,9 @@
                     <!-- Contact Info -->
                     <div class="col-md-3 mb-4 mb-md-0">
                         <h5>Contact Info</h5>
-                        <p class="contact"><strong>Phone:</strong> +1 (555) 123-4567</p>
-                        <p class="contact"><strong>Email:</strong> info@aiattendance.com</p>
-                        <p class="contact"><strong>Address:</strong> 123 Tech Street, AI Valley, Techland 12345</p>
+                        <p class="contact"><strong>Phone:</strong> +91 93698 51904</p>
+                        <p class="contact"><strong>Email:</strong> info@upasthitii.com</p>
+                        <p class="contact"><strong>Address:</strong> Ahmedabad, Gujarat, India</p>
                     </div>
                 </div>
                 <div class="footer-bottom text-center mt-4">
@@ -981,15 +1131,45 @@
             </div>
         </div>
         </div>
+        <div id="toastcontainer"></div>
 
-     <script>
-    window.addEventListener("load", function () {
-      setTimeout(() => {
-        document.getElementById("preloader").style.display = "none";
-        // document.getElementById("main-content").style.display = "block";
-      }, 3000); // 3 seconds
-    });
-  </script>  
+    
+    <script>
+        window.addEventListener("load", function () {
+            setTimeout(() => {
+                document.getElementById("preloader").style.display = "none";
+                // document.getElementById("main-content").style.display = "block";
+            }, 3000); // 3 seconds
+            });
+    </script>  
+    <script>
+        function toggleChat() {
+            var popup = document.getElementById("chatPopup");
+            popup.style.display = popup.style.display === "block" ? "none" : "block";
+        }
+    </script>
+    <script>
+        // Button Navigation
+            document.addEventListener('DOMContentLoaded', function () {
+                const getStartedBtn = document.getElementById('getStartedBtn');
+                const viewProjectBtn = document.getElementById('viewProjectBtn');
+
+                if (getStartedBtn) {
+                    getStartedBtn.addEventListener('click', () => {
+                        const contactLink = document.querySelector('.nav-link[data-page="contact"]');
+                        if (contactLink) contactLink.click();
+                    });
+                }
+
+                if (viewProjectBtn) {
+                    viewProjectBtn.addEventListener('click', () => {
+                        const servicesLink = document.querySelector('.nav-link[data-page="services"]');
+                        if (servicesLink) servicesLink.click();
+                    });
+                }
+            });
+    </script>
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
