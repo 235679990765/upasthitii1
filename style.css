@@ -648,6 +648,7 @@ body {
 .contact-item p {
     margin: 0;
     color: var(--secondary-color);
+    font-size: 0.95rem;
 }
 
 /* Responsive Vertical Page Avatars */
@@ -1562,7 +1563,7 @@ html {
     }
 
     .contact {
-        text-align: justify;
+        text-align: center;
     }
 
     .btn-lg {
@@ -1621,6 +1622,7 @@ html {
         padding: 1.5rem;
     }
 
+
     .about-stats {
         padding: 1.5rem;
     }
@@ -1648,6 +1650,7 @@ html {
 
     .responsive-page-avatars {
         padding: 8px 0;
+        height: 60px;
     }
 
     .page-avatar {
@@ -1661,7 +1664,8 @@ html {
 
 @media (max-width: 480px) {
     .responsive-page-avatars {
-        padding: 5px 0;
+        padding: 8px 0;
+        height: 60px;
     }
 
     .page-avatar {
