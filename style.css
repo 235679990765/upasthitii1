@@ -1251,7 +1251,13 @@ html {
   padding-left: 20px;
 }
 
-
+#file{
+  background: white;
+  display: inline;
+  padding: 12px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
 
 
 /* Testimonials */

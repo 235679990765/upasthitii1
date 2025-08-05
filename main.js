@@ -49,7 +49,7 @@ function handleFooterNavigation() {
 }
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
-    initializeContactForm();
+    // initializeContactForm();
     addScrollEffects();
     handleResponsiveAvatars();
     handleFooterNavigation();
@@ -96,55 +96,15 @@ function initializeNavigation() {
 }
 
 
-// Contact Form System
-function initializeContactForm() {
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                username: document.getElementById('username').value,
-                email: document.getElementById('email').value,
-                contact: document.getElementById('contact').value,
-                gender: document.getElementById('gender').value,
-                city: document.getElementById('city').value,
-                state: document.getElementById('state').value,
-                pincode: document.getElementById('pincode').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Validate form
-            if (validateForm(formData)) {
-                // Show loading state
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.innerHTML = '<span class="loading"></span> Sending...';
-                submitBtn.disabled = true;
-                
-                // Simulate form submission
-                setTimeout(() => {
-                    showSuccessMessage();
-                    resetForm();
-                    
-                    // Reset button
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 2000);
-            }
-        });
-    }
-}
-
 // Form Validation
 function validateForm(data) {
     const errors = [];
     
-    // Username validation
-    if (!data.username.trim()) {
-        errors.push('Username is required');
-    } else if (data.username.length < 3) {
-        errors.push('Username must be at least 3 characters');
+    // Fullname validation
+    if (!data.fullname || !data.fullname.trim()) {
+        errors.push('Full name is required');
+    } else if (data.fullname.length < 3) {
+        errors.push('Full name must be at least 3 characters');
     }
     
     // Email validation
