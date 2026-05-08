@@ -45,16 +45,16 @@ jobs:
 
 
 
-      - name: Docker Login
+       - name: Docker Login
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build Docker Image
         run: |
-          docker build -t root:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/root:${{ github.sha }} .
 
       - name: Push Docker Image
         run: |
-          docker push root:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/root:${{ github.sha }}
 
   deploy:
 
