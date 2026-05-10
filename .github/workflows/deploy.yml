@@ -17,7 +17,6 @@ jobs:
 
   security-scan:
 
-    # ONLY run for generated automation commits
     if: contains(github.event.head_commit.message, 'Add generated DevSecOps automation')
 
     runs-on: ubuntu-latest
@@ -27,17 +26,25 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # ================================================
+      # Trivy Security Scan
+      # ================================================
+
       - name: Run Trivy Filesystem Scan
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
           scan-ref: .
 
+      # ================================================
+      # Semgrep Static Analysis
+      # ================================================
+
       - name: Run Semgrep Static Analysis
         uses: returntocorp/semgrep-action@v1
 
   # ===================================================
-  # BUILD + PUSH CONTAINER
+  # BUILD + PUSH DOCKER IMAGE
   # ===================================================
 
   build-and-push:
@@ -60,22 +67,15 @@ jobs:
 
 
 
-      # ================================================
-      # Debug Repository Files
-      # ================================================
-
-      - name: Debug Files
-        run: |
-          pwd
-          ls -la
-          cat Dockerfile || echo "Dockerfile missing"
 
       # ================================================
-      # Verify Dockerfile Exists
+      # Verify Dockerfile
       # ================================================
 
       - name: Verify Dockerfile
         run: |
+          pwd
+          ls -la
           test -f Dockerfile
 
       # ================================================
@@ -92,7 +92,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/root:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/root:latest .
 
       # ================================================
       # Push Docker Image
@@ -100,13 +100,13 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/root:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/root:latest
 
   # ===================================================
-  # DEPLOY PLACEHOLDER
+  # KUBERNETES DEPLOYMENT
   # ===================================================
 
-  deploy:
+  deploy-kubernetes:
 
     if: contains(github.event.head_commit.message, 'Add generated DevSecOps automation')
 
@@ -116,14 +116,69 @@ jobs:
 
     steps:
 
-      - name: Deployment Stage
-        run: |
-          echo "Continuous Deployment Running..."
-          echo "Deployment completed successfully"
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Service Information
+      # ================================================
+      # Install kubectl
+      # ================================================
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+
+      # ================================================
+      # Configure Kubernetes
+      # ================================================
+
+      - name: Configure Kubernetes
         run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+
+      # ================================================
+      # Verify Kubernetes Files
+      # ================================================
+
+      - name: Verify k8s Directory
+        run: |
+          ls -R k8s
+
+      # ================================================
+      # Replace Docker Image
+      # ================================================
+
+      - name: Replace Docker Image
+        run: |
+          find k8s -type f -name "*.yaml" -exec sed -i 's|REPLACE_IMAGE|${{ secrets.DOCKER_USERNAME }}/root:latest|g' {} +
+
+      # ================================================
+      # Deploy Kubernetes Resources
+      # ================================================
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f k8s/
+
+      # ================================================
+      # Verify Kubernetes Deployment
+      # ================================================
+
+      - name: Verify Kubernetes Resources
+        run: |
+          kubectl get all
+
+      # ================================================
+      # Deployment Information
+      # ================================================
+
+      - name: Deployment Information
+        run: |
+          echo "=================================="
           echo "Service Name: root"
           echo "Language: frontend-static"
           echo "Framework: None"
           echo "Port: 80"
+          echo "Docker Image:"
+          echo "${{ secrets.DOCKER_USERNAME }}/root:latest"
+          echo "Kubernetes Deployment Successful"
+          echo "=================================="
